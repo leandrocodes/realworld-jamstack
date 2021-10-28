@@ -1,13 +1,16 @@
+import Link from 'next/link'
 export default function Home({ posts }) {
 	return (
 		<div>
 			{/* loop over the posts and render them */}
 			{posts &&
 				posts.map(post => (
-					<div key={post.id}>
-						<h2>{post.Title}</h2>
-						<p>{post.User.username}</p>
-					</div>
+					<Link href={`/${post.Slug}`} key={post.id} passHref>
+						<a>
+							<h2>{post.Title}</h2>
+							<p>{post.User.username}</p>
+						</a>
+					</Link>
 				))}
 		</div>
 	)
